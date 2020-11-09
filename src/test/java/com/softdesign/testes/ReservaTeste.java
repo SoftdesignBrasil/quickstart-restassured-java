@@ -20,6 +20,7 @@ public class ReservaTeste
     public void realizarReservaSucesso()
     {
         given().
+                log().all().
             contentType(ContentType.JSON).
             body(dados.camposReservaBody()).
         when().
@@ -28,6 +29,20 @@ public class ReservaTeste
             assertThat().
             body("bookingid", notNullValue());
     }
+
+    @Test
+    public void listarReservaIncluida(){
+
+        String id = dados.retornarIdReserva();
+
+        given().
+        when().
+            get(url + "/" + id).
+        then().
+            assertThat().
+            body("bookingid", equalTo(id));
+    }
+
 
     @Test
     public void excluirReservaSucesso()

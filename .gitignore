@@ -1,0 +1,8 @@
+# Compiled source #
+###################
+*.class
+*.log
+#Compiled target packages
+######################
+/target
+/.idea
