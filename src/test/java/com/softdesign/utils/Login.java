@@ -10,16 +10,14 @@ public class Login {
     String url = urlBase.urlBaseAmbiente("escolhaAmbiente");
     LoginDados login = new LoginDados();
 
-    public String loginAuthToken(){
-        String token =
-        given().
-            contentType(ContentType.JSON).
-            body(login.camposLoginBody()).
-        when().
-            post(url + "/auth").
-        then().
-            extract().path("token");
-
-        return token;
+    public String loginAuthToken() {
+        return given()
+                .contentType(ContentType.JSON)
+                .body(login.camposLoginBody())
+                .when()
+                .post(url + "/auth")
+                .then()
+                .extract()
+                .path("token");
     }
 }
